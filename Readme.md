@@ -1,7 +1,7 @@
 # Учебный проект «Угадай мелодию» [![Build status][travis-image]][travis-url]
 
 * Студент: [Василий Пономаренко](https://up.htmlacademy.ru/react/2/user/58484).
-* Наставник: `Неизвестно`.
+* Наставник: [Алексей Балесный](https://htmlacademy.ru/profile/id221665).
 
 ---
 

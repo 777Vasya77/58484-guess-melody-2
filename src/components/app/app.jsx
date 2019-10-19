@@ -1,5 +1,5 @@
 import React from 'react';
-import WelcomeScreen from '~/components/welcome-screen/welcome-screen.jsx';
+import WelcomeScreen from '~/components/welcome-screen/welcome-screen';
 import PropTypes from 'prop-types';
 
 const App = (props) => {

@@ -8,7 +8,7 @@ it(`check the onClick callback`, () => {
       <WelcomeScreen
         gameTime={0}
         errorsCount={0}
-        onClink={clickHandler}
+        onStartButtonClick={clickHandler}
       />
   );
 

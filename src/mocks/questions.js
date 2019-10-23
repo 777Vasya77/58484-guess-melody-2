@@ -1,8 +1,4 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import App from '~/components/app/app';
-
-const questions = [
+export const questions = [
   {
     type: `genre`,
     genre: `rock`,
@@ -90,16 +86,3 @@ const questions = [
     ],
   },
 ];
-
-it(`App component render correctly`, () => {
-  const tree = renderer
-    .create(
-        <App
-          questions={questions}
-          errorsCount={0}
-          gameTime={0}
-        />
-    ).toJSON();
-
-  expect(tree).toMatchSnapshot();
-});

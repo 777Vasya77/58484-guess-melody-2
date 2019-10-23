@@ -8,7 +8,7 @@ it(`render correctly`, () => {
         <WelcomeScreen
           gameTime={0}
           errorsCount={0}
-        />
+          onStartButtonClick={() => {}} />
     ).toJSON();
 
   expect(tree).toMatchSnapshot();

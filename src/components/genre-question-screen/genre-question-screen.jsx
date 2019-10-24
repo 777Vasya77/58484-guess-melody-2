@@ -2,36 +2,60 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
 class GenreQuestionScreen extends PureComponent {
+  static _getInitialState(answers) {
+    const initialState = {};
+
+    answers.map((answer, i) => {
+      Object.assign(initialState, {[`answer-${i}`]: false});
+    });
+
+    return initialState;
+  }
+
   constructor(props) {
     super(props);
 
-    this.state = {
-      userAnswer: []
-    };
+    this.state = GenreQuestionScreen._getInitialState(props.question.answers);
 
     this._handleChange = this._handleChange.bind(this);
+    this._handleSubmit = this._handleSubmit.bind(this);
   }
 
   _handleChange(evt) {
-    const target = evt.target;
-    const answers = this.state.userAnswer;
-
-    if (target.checked) {
-      answers.push(JSON.parse(target.value));
-    } else {
-      const index = answers.findIndex((answer) => answer.name === target.name);
-      answers.splice(index, 1);
-    }
-
-    this.setState({userAnswer: answers});
+    this.setState({
+      [evt.target.name]: evt.target.checked
+    });
   }
 
-  _clearUserAnswer() {
-    this.setState({userAnswer: []});
+  _handleSubmit(evt) {
+    evt.preventDefault();
+    const {onAnswer} = this.props;
+
+    onAnswer(this._getCheckedAnswer());
+    this.resetState();
+  }
+
+  _getCheckedAnswer() {
+    const {answers} = this.props.question;
+    const checkedAnswers = [];
+
+    for (let [key, value] of Object.entries(this.state)) {
+      if (value) {
+        const index = key.split(``).reverse()[0];
+        checkedAnswers.push(answers[index]);
+      }
+    }
+
+    return checkedAnswers;
+  }
+
+  resetState() {
+    const {answers} = this.props.question;
+    this.setState(GenreQuestionScreen._getInitialState(answers));
   }
 
   render() {
-    const {question, screenIndex, onAnswer} = this.props;
+    const {question, screenIndex} = this.props;
     const {answers, genre} = question;
 
     return (
@@ -62,11 +86,7 @@ class GenreQuestionScreen extends PureComponent {
 
         <section className="game__screen">
           <h2 className="game__title">Выберите {genre} треки</h2>
-          <form className="game__tracks" onSubmit={(evt) => {
-            evt.preventDefault();
-            onAnswer(this.state.userAnswer);
-            this._clearUserAnswer();
-          }}>
+          <form className="game__tracks" onSubmit={this._handleSubmit}>
             {answers.map((answer, i) => {
               return (
                 <div key={`${screenIndex}-answer-${i}`} className="track">
@@ -78,8 +98,9 @@ class GenreQuestionScreen extends PureComponent {
                     <input
                       className="game__input visually-hidden"
                       type="checkbox"
-                      name={`${screenIndex}-answer-${i}`}
-                      value={JSON.stringify(answer)}
+                      name={`answer-${i}`}
+                      value={`answer-${i}`}
+                      checked={this.state[`answer-${i}`]}
                       id={`answer-${i}`}
                       onChange={this._handleChange}
                     />

@@ -25,14 +25,17 @@ const question = {
   ],
 };
 
-const changeCheckboxStatus = (wrapper, answer, status = true) => {
+const changeCheckboxStatus = (wrapper, status = true) => {
   const input = wrapper.find(`.game__input`).first();
+  const name = input.prop(`name`);
   input.simulate(`change`, {
     target: {
-      value: JSON.stringify(answer),
+      name,
       checked: status
     }
   });
+
+  return name;
 };
 
 describe(`GenreQuestionScreen component e2e tests`, () => {
@@ -50,7 +53,7 @@ describe(`GenreQuestionScreen component e2e tests`, () => {
         />
     );
 
-    changeCheckboxStatus(wrapper, answer);
+    changeCheckboxStatus(wrapper);
 
     const form = wrapper.find(`.game__tracks`);
     form.simulate(`submit`, {
@@ -66,17 +69,17 @@ describe(`GenreQuestionScreen component e2e tests`, () => {
     expect(callbackFunction).toBeCalledTimes(1);
   });
 
-  it(`Answer correctly added in state`, () => {
-    changeCheckboxStatus(wrapper, answer);
-    changeCheckboxStatus(wrapper, answer);
-    expect(wrapper.state().userAnswer).toHaveLength(2);
+  it(`Answer correctly changed status on true in state`, () => {
+    const name = changeCheckboxStatus(wrapper);
+    expect(wrapper.state(name)).toBeTruthy();
   });
 
-  it(`Answer correctly removed from state`, () => {
-    changeCheckboxStatus(wrapper, answer);
-    changeCheckboxStatus(wrapper, answer);
-    changeCheckboxStatus(wrapper, answer, false);
-    expect(wrapper.state().userAnswer).toHaveLength(1);
+  it(`Answer correctly changed status on false in state`, () => {
+    const name = changeCheckboxStatus(wrapper, false);
+    expect(wrapper.state(name)).toBeFalsy();
   });
 
+  it(`Reset state working correctly`, () => {
+    expect(wrapper.state()).toEqual(GenreQuestionScreen._getInitialState(question.answers));
+  });
 });

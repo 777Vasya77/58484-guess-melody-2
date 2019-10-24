@@ -105,12 +105,13 @@ exports[`GenreQuestionScreen component render correctly 1`] = `
           className="game__answer"
         >
           <input
+            checked={false}
             className="game__input visually-hidden"
             id="answer-0"
-            name="0-answer-0"
+            name="answer-0"
             onChange={[Function]}
             type="checkbox"
-            value="{\\"src\\":\\"https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg\\",\\"genre\\":\\"rock\\"}"
+            value="answer-0"
           />
           <label
             className="game__check"
@@ -136,12 +137,13 @@ exports[`GenreQuestionScreen component render correctly 1`] = `
           className="game__answer"
         >
           <input
+            checked={false}
             className="game__input visually-hidden"
             id="answer-1"
-            name="0-answer-1"
+            name="answer-1"
             onChange={[Function]}
             type="checkbox"
-            value="{\\"src\\":\\"https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg\\",\\"genre\\":\\"pop\\"}"
+            value="answer-1"
           />
           <label
             className="game__check"
@@ -167,12 +169,13 @@ exports[`GenreQuestionScreen component render correctly 1`] = `
           className="game__answer"
         >
           <input
+            checked={false}
             className="game__input visually-hidden"
             id="answer-2"
-            name="0-answer-2"
+            name="answer-2"
             onChange={[Function]}
             type="checkbox"
-            value="{\\"src\\":\\"https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg\\",\\"genre\\":\\"jazz\\"}"
+            value="answer-2"
           />
           <label
             className="game__check"
@@ -198,12 +201,13 @@ exports[`GenreQuestionScreen component render correctly 1`] = `
           className="game__answer"
         >
           <input
+            checked={false}
             className="game__input visually-hidden"
             id="answer-3"
-            name="0-answer-3"
+            name="answer-3"
             onChange={[Function]}
             type="checkbox"
-            value="{\\"src\\":\\"https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg\\",\\"genre\\":\\"rock\\"}"
+            value="answer-3"
           />
           <label
             className="game__check"

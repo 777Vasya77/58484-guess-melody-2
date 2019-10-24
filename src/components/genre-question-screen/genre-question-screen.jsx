@@ -5,7 +5,7 @@ class GenreQuestionScreen extends PureComponent {
   static _getInitialState(answers) {
     const initialState = {};
 
-    answers.map((answer, i) => {
+    answers.forEach((answer, i) => {
       Object.assign(initialState, {[`answer-${i}`]: false});
     });
 

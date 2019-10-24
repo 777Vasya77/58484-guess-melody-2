@@ -24,6 +24,7 @@ const question = {
   ],
 };
 
+const answer = question.answers[0];
 let wrapper;
 let callbackFunction;
 
@@ -39,12 +40,12 @@ beforeEach(() => {
 
   const input = wrapper.find(`.game__artist`);
   input.simulate(`change`, {
-    target: {value: JSON.stringify(question)}
+    target: {value: JSON.stringify(answer)}
   });
 });
 
 it(`Check data in callback function`, () => {
-  expect(callbackFunction).toHaveBeenCalledWith([question]);
+  expect(callbackFunction).toHaveBeenCalledWith([answer]);
 });
 
 it(`Check call count function`, () => {

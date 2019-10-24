@@ -32,7 +32,7 @@ class GenreQuestionScreen extends PureComponent {
     const {onAnswer} = this.props;
 
     onAnswer(this._getCheckedAnswer());
-    this.resetState();
+    this._resetState();
   }
 
   _getCheckedAnswer() {
@@ -49,7 +49,7 @@ class GenreQuestionScreen extends PureComponent {
     return checkedAnswers;
   }
 
-  resetState() {
+  _resetState() {
     const {answers} = this.props.question;
     this.setState(GenreQuestionScreen._getInitialState(answers));
   }

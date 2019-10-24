@@ -13,17 +13,21 @@ class GenreQuestionScreen extends PureComponent {
   }
 
   _handleChange(evt) {
-    const answer = JSON.parse(evt.target.value);
+    const target = evt.target;
+    const answers = this.state.userAnswer;
 
-    this.setState({
-      userAnswer: this.state.userAnswer.concat(answer)
-    });
+    if (target.checked) {
+      answers.push(JSON.parse(target.value));
+    } else {
+      const index = answers.findIndex((answer) => answer.name === target.name);
+      answers.splice(index, 1);
+    }
+
+    this.setState({userAnswer: answers});
   }
 
   _clearUserAnswer() {
-    this.setState({
-      userAnswer: []
-    });
+    this.setState({userAnswer: []});
   }
 
   render() {
@@ -74,7 +78,7 @@ class GenreQuestionScreen extends PureComponent {
                     <input
                       className="game__input visually-hidden"
                       type="checkbox"
-                      name="answer"
+                      name={`${screenIndex}-answer-${i}`}
                       value={JSON.stringify(answer)}
                       id={`answer-${i}`}
                       onChange={this._handleChange}

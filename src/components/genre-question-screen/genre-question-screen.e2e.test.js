@@ -25,34 +25,58 @@ const question = {
   ],
 };
 
-let wrapper;
-let callbackFunction;
-
-beforeEach(() => {
-  callbackFunction = jest.fn();
-  wrapper = shallow(
-      <GenreQuestionScreen
-        question={question}
-        screenIndex={0}
-        onAnswer={callbackFunction}
-      />
-  );
-
+const changeCheckboxStatus = (wrapper, answer, status = true) => {
   const input = wrapper.find(`.game__input`).first();
   input.simulate(`change`, {
-    target: {value: JSON.stringify(question)}
+    target: {
+      value: JSON.stringify(answer),
+      checked: status
+    }
+  });
+};
+
+describe(`GenreQuestionScreen component e2e tests`, () => {
+  const answer = question.answers[0];
+  let wrapper;
+  let callbackFunction;
+
+  beforeEach(() => {
+    callbackFunction = jest.fn();
+    wrapper = shallow(
+        <GenreQuestionScreen
+          question={question}
+          screenIndex={0}
+          onAnswer={callbackFunction}
+        />
+    );
+
+    changeCheckboxStatus(wrapper, answer);
+
+    const form = wrapper.find(`.game__tracks`);
+    form.simulate(`submit`, {
+      preventDefault: () => {}
+    });
   });
 
-  const form = wrapper.find(`.game__tracks`);
-  form.simulate(`submit`, {
-    preventDefault: () => {}
+  it(`Check data in callback function`, () => {
+    expect(callbackFunction).toHaveBeenCalledWith([answer]);
   });
-});
 
-it(`Check data in callback function`, () => {
-  expect(callbackFunction).toHaveBeenCalledWith([question]);
-});
+  it(`Check call count function`, () => {
+    expect(callbackFunction).toBeCalledTimes(1);
+  });
 
-it(`Check call count function`, () => {
-  expect(callbackFunction).toBeCalledTimes(1);
+  it(`Answer correctly added in state`, () => {
+    changeCheckboxStatus(wrapper, answer);
+    changeCheckboxStatus(wrapper, answer);
+    expect(wrapper.state().userAnswer).toHaveLength(2);
+  });
+
+  it(`Answer correctly removed from state`, () => {
+    changeCheckboxStatus(wrapper, answer);
+    changeCheckboxStatus(wrapper, answer);
+    changeCheckboxStatus(wrapper, answer, false);
+    expect(wrapper.state().userAnswer).toHaveLength(1);
+  });
+
 });

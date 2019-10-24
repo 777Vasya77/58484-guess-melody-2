@@ -24,31 +24,32 @@ const question = {
   ],
 };
 
-const answer = question.answers[0];
-let wrapper;
-let callbackFunction;
+describe(`ArtistQuestionScreen component e2e tests`, () => {
+  const answer = question.answers[0];
+  let wrapper;
+  let callbackFunction;
 
-beforeEach(() => {
-  callbackFunction = jest.fn();
-  wrapper = shallow(
-      <ArtistQuestionScreen
-        question={question}
-        screenIndex={0}
-        onAnswer={callbackFunction}
-      />
-  );
+  beforeEach(() => {
+    callbackFunction = jest.fn();
+    wrapper = shallow(
+        <ArtistQuestionScreen
+          question={question}
+          screenIndex={0}
+          onAnswer={callbackFunction}
+        />
+    );
 
-  const input = wrapper.find(`.game__artist`);
-  input.simulate(`change`, {
-    target: {value: JSON.stringify(answer)}
+    const input = wrapper.find(`.game__artist`);
+    input.simulate(`change`, {
+      target: {value: JSON.stringify(answer)}
+    });
+  });
+
+  it(`Check data in callback function`, () => {
+    expect(callbackFunction).toHaveBeenCalledWith([answer]);
+  });
+
+  it(`Check call count function`, () => {
+    expect(callbackFunction).toBeCalledTimes(1);
   });
 });
-
-it(`Check data in callback function`, () => {
-  expect(callbackFunction).toHaveBeenCalledWith([answer]);
-});
-
-it(`Check call count function`, () => {
-  expect(callbackFunction).toBeCalledTimes(1);
-});
-

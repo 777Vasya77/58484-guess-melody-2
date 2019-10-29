@@ -82,7 +82,7 @@ exports[`GenreQuestionScreen component render correctly 1`] = `
       className="game__title"
     >
       Выберите 
-      rock
+      alternative
        треки
     </h2>
     <form

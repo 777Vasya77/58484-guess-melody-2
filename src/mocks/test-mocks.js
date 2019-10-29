@@ -213,3 +213,48 @@ export const questions = [
     ]
   }
 ];
+
+export const questionTypeArtist = {
+  'type': `artist`,
+  'song': {
+    'artist': `Endless Love`,
+    'src': `https://htmlacademy-react-2.appspot.com/guess-melody/static/music/Dirty_Mac.mp3`
+  },
+  'answers': [
+    {
+      'picture': `https://htmlacademy-react-2.appspot.com/guess-melody/static/artist/Quincas_Moreira.jpg`,
+      'artist': `Quincas Moreira`
+    },
+    {
+      'picture': `https://htmlacademy-react-2.appspot.com/guess-melody/static/artist/Endless_Love.jpg`,
+      'artist': `Endless Love`
+    },
+    {
+      'picture': `https://htmlacademy-react-2.appspot.com/guess-melody/static/artist/Devon_Church.jpg`,
+      'artist': `Devon Church`
+    }
+  ]
+};
+
+export const questionTypeGenre = {
+  'type': `genre`,
+  'genre': `alternative`,
+  'answers': [
+    {
+      'src': `https://htmlacademy-react-2.appspot.com/guess-melody/static/music/Bark.mp3`,
+      'genre': `reggae`
+    },
+    {
+      'src': `https://htmlacademy-react-2.appspot.com/guess-melody/static/music/Addis_Ababa.mp3`,
+      'genre': `reggae`
+    },
+    {
+      'src': `https://htmlacademy-react-2.appspot.com/guess-melody/static/music/Memories_Station_of_Tomorrow.mp3`,
+      'genre': `alternative`
+    },
+    {
+      'src': `https://htmlacademy-react-2.appspot.com/guess-melody/static/music/Blue_Whale.mp3`,
+      'genre': `alternative`
+    }
+  ]
+};

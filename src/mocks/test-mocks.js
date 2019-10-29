@@ -258,3 +258,5 @@ export const questionTypeGenre = {
     }
   ]
 };
+
+export const audioSrc = `https://htmlacademy-react-2.appspot.com/guess-melody/static/music/Blue_Whale.mp3`;

@@ -9,7 +9,8 @@ it(`ArtistQuestionScreen component render correctly`, () => {
         question={question}
         screenIndex={0}
         onAnswer={() => {}}
-      />
+      />,
+      {createNodeMock: () => ({})}
   ).toJSON();
 
   expect(tree).toMatchSnapshot();

@@ -1,29 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
+import {questionTypeGenre as question} from '~/mocks/test-mocks';
 import GenreQuestionScreen from '~/components/genre-question-screen/genre-question-screen';
-
-const question = {
-  type: `genre`,
-  genre: `rock`,
-  answers: [
-    {
-      src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
-      genre: `rock`,
-    },
-    {
-      src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
-      genre: `pop`,
-    },
-    {
-      src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
-      genre: `jazz`,
-    },
-    {
-      src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
-      genre: `rock`,
-    },
-  ],
-};
 
 const changeCheckboxStatus = (wrapper, status = true) => {
   const input = wrapper.find(`.game__input`).first();
@@ -71,7 +49,7 @@ describe(`GenreQuestionScreen component e2e tests`, () => {
 
   it(`Answer correctly changed status on true in state`, () => {
     const name = changeCheckboxStatus(wrapper);
-    expect(wrapper.state(name)).toBeTruthy();
+    expect(wrapper.state(`userAnswers`)[name]).toBeTruthy();
   });
 
   it(`Answer correctly changed status on false in state`, () => {

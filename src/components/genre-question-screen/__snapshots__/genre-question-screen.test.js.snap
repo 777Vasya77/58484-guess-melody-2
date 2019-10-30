@@ -82,7 +82,7 @@ exports[`GenreQuestionScreen component render correctly 1`] = `
       className="game__title"
     >
       Выберите 
-      rock
+      alternative
        треки
     </h2>
     <form
@@ -94,6 +94,8 @@ exports[`GenreQuestionScreen component render correctly 1`] = `
       >
         <button
           className="track__button track__button--play"
+          disabled={true}
+          onClick={[Function]}
           type="button"
         />
         <div
@@ -126,6 +128,8 @@ exports[`GenreQuestionScreen component render correctly 1`] = `
       >
         <button
           className="track__button track__button--play"
+          disabled={true}
+          onClick={[Function]}
           type="button"
         />
         <div
@@ -158,6 +162,8 @@ exports[`GenreQuestionScreen component render correctly 1`] = `
       >
         <button
           className="track__button track__button--play"
+          disabled={true}
+          onClick={[Function]}
           type="button"
         />
         <div
@@ -190,6 +196,8 @@ exports[`GenreQuestionScreen component render correctly 1`] = `
       >
         <button
           className="track__button track__button--play"
+          disabled={true}
+          onClick={[Function]}
           type="button"
         />
         <div

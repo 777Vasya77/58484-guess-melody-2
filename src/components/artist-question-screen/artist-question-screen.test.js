@@ -9,6 +9,8 @@ it(`ArtistQuestionScreen component render correctly`, () => {
         question={question}
         screenIndex={0}
         onAnswer={() => {}}
+        mistakes={3}
+        gameTime={3}
       />,
       {createNodeMock: () => ({})}
   ).toJSON();

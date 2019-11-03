@@ -2,56 +2,167 @@
 
 exports[`App component render correctly 1`] = `
 <section
-  className="welcome"
+  className="game game--artist"
 >
-  <div
-    className="welcome__logo"
+  <header
+    className="game__header"
   >
-    <img
-      alt="Угадай мелодию"
-      height="83"
-      src="img/melody-logo.png"
-      width="186"
-    />
-  </div>
-  <button
-    className="welcome__button"
-    onClick={[Function]}
-  >
-    <span
-      className="visually-hidden"
+    <a
+      className="game__back"
+      href="#"
     >
-      Начать игру
-    </span>
-  </button>
-  <h2
-    className="welcome__rules-title"
+      <span
+        className="visually-hidden"
+      >
+        Сыграть ещё раз
+      </span>
+      <img
+        alt="Угадай мелодию"
+        className="game__logo"
+        src="img/melody-logo-ginger.png"
+      />
+    </a>
+    <svg
+      className="timer"
+      viewBox="0 0 780 780"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        className="timer__line"
+        cx={390}
+        cy={390}
+        r={370}
+        style={
+          Object {
+            "filter": "url(#blur)",
+            "transform": "scaleY(-1)",
+            "transformOrigin": "center",
+          }
+        }
+      />
+    </svg>
+    <div
+      className="timer__value"
+      xmlns="http://www.w3.org/1999/xhtml"
+    >
+      <span
+        className="timer__mins"
+      >
+        00
+      </span>
+      <span
+        className="timer__dots"
+      >
+        :
+      </span>
+      <span
+        className="timer__secs"
+      >
+        00
+      </span>
+    </div>
+    <div
+      className="game__mistakes"
+    />
+  </header>
+  <section
+    className="game__screen"
   >
-    Правила игры
-  </h2>
-  <p
-    className="welcome__text"
-  >
-    Правила просты:
-  </p>
-  <ul
-    className="welcome__rules-list"
-  >
-    <li>
-      За 
-      0
-       минут нужно ответить на все вопросы.
-    </li>
-    <li>
-      Можно допустить 
-      0
-       ошибки.
-    </li>
-  </ul>
-  <p
-    className="welcome__text"
-  >
-    Удачи!
-  </p>
+    <h2
+      className="game__title"
+    >
+      Кто исполняет эту песню?
+    </h2>
+    <div
+      className="game__track"
+    >
+      <div
+        className="track"
+      >
+        <button
+          className="track__button track__button--play"
+          disabled={true}
+          onClick={[Function]}
+          type="button"
+        />
+        <div
+          className="track__status"
+        >
+          <audio />
+        </div>
+      </div>
+    </div>
+    <form
+      className="game__artist"
+      onChange={[Function]}
+    >
+      <div
+        className="artist"
+      >
+        <input
+          className="artist__input visually-hidden"
+          id="answer-0"
+          name="answer"
+          type="radio"
+          value="{\\"picture\\":\\"https://htmlacademy-react-2.appspot.com/guess-melody/static/artist/Quincas_Moreira.jpg\\",\\"artist\\":\\"Quincas Moreira\\"}"
+        />
+        <label
+          className="artist__name"
+          htmlFor="answer-0"
+        >
+          <img
+            alt="Quincas Moreira"
+            className="artist__picture"
+            src="https://htmlacademy-react-2.appspot.com/guess-melody/static/artist/Quincas_Moreira.jpg"
+          />
+          Quincas Moreira
+        </label>
+      </div>
+      <div
+        className="artist"
+      >
+        <input
+          className="artist__input visually-hidden"
+          id="answer-1"
+          name="answer"
+          type="radio"
+          value="{\\"picture\\":\\"https://htmlacademy-react-2.appspot.com/guess-melody/static/artist/Endless_Love.jpg\\",\\"artist\\":\\"Endless Love\\"}"
+        />
+        <label
+          className="artist__name"
+          htmlFor="answer-1"
+        >
+          <img
+            alt="Endless Love"
+            className="artist__picture"
+            src="https://htmlacademy-react-2.appspot.com/guess-melody/static/artist/Endless_Love.jpg"
+          />
+          Endless Love
+        </label>
+      </div>
+      <div
+        className="artist"
+      >
+        <input
+          className="artist__input visually-hidden"
+          id="answer-2"
+          name="answer"
+          type="radio"
+          value="{\\"picture\\":\\"https://htmlacademy-react-2.appspot.com/guess-melody/static/artist/Devon_Church.jpg\\",\\"artist\\":\\"Devon Church\\"}"
+        />
+        <label
+          className="artist__name"
+          htmlFor="answer-2"
+        >
+          <img
+            alt="Devon Church"
+            className="artist__picture"
+            src="https://htmlacademy-react-2.appspot.com/guess-melody/static/artist/Devon_Church.jpg"
+          />
+          Devon Church
+        </label>
+      </div>
+    </form>
+  </section>
 </section>
 `;

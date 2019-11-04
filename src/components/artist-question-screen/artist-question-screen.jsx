@@ -75,7 +75,6 @@ ArtistQuestionScreen.propTypes = {
   }).isRequired,
   screenIndex: PropTypes.number.isRequired,
   onAnswer: PropTypes.func,
-  gameTime: PropTypes.number.isRequired,
 };
 
 export default ArtistQuestionScreen;

@@ -15,7 +15,6 @@ describe(`ArtistQuestionScreen component e2e tests`, () => {
           question={question}
           screenIndex={0}
           onAnswer={callbackFunction}
-          gameTime={3}
         />
     );
 

@@ -75,7 +75,6 @@ ArtistQuestionScreen.propTypes = {
   }).isRequired,
   screenIndex: PropTypes.number.isRequired,
   onAnswer: PropTypes.func,
-  mistakes: PropTypes.number.isRequired,
   gameTime: PropTypes.number.isRequired,
 };
 

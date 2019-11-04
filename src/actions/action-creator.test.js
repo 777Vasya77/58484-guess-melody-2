@@ -5,11 +5,10 @@ describe(`Action creator work correctly`, function () {
   it(`Action creator for increment question return correct action`, () => {
     expect(ActionCreator.incrementQuestion()).toEqual({
       type: INCREMENT_QUESTION,
-      step: 1
     });
   });
 
-  it(`Action creator for increment mistakes return action with 0 mistake value`, () => {
+  it(`Action creator for increment mistakes return INCREMENT_MISTAKES action with 0 mistake value`, () => {
     expect(ActionCreator.incrementMistakes([
       {genre: `reggae`, src: ``},
       {genre: `reggae`, src: ``},
@@ -19,13 +18,12 @@ describe(`Action creator work correctly`, function () {
     });
   });
 
-  it(`Action creator for increment mistakes return action with 1 mistake value`, () => {
+  it(`Action creator for increment mistakes return RESET action`, () => {
     expect(ActionCreator.incrementMistakes([
       {genre: `reggae`, src: ``},
       {genre: `reggae`, src: ``},
-    ], {genre: `rock`, type: `genre`}, 0, 2)).toEqual({
-      type: INCREMENT_MISTAKES,
-      mistakes: 1,
+    ], {genre: `rock`, type: `genre`}, 1, 2)).toEqual({
+      type: RESET,
     });
   });
 

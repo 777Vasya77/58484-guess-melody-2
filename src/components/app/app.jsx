@@ -6,6 +6,15 @@ import {decrementTimer, incrementMistakes, incrementQuestion, resetGame} from '~
 import QuestionScreen from '~/components/question-screen/question-screen';
 
 class App extends PureComponent {
+  render() {
+    const {onUserAnswer, step, questions, mistakes, errorsCount} = this.props;
+    const question = questions[step];
+
+    return App._getScreen(step, this.props, (userAnswer) => {
+      onUserAnswer(userAnswer, question, mistakes, errorsCount, step);
+    });
+  }
+
   static _getScreen(step, props, onUserAnswer) {
     if (step === -1) {
       const {gameTime, errorsCount, onWelcomeScreenClick} = props;
@@ -30,15 +39,6 @@ class App extends PureComponent {
       onGameTimeEnded={onGameTimeEnded}
     />;
   }
-
-  render() {
-    const {onUserAnswer, step, questions, mistakes, errorsCount} = this.props;
-    const question = questions[step];
-
-    return App._getScreen(step, this.props, (userAnswer) => {
-      onUserAnswer(userAnswer, question, mistakes, errorsCount);
-    });
-  }
 }
 
 App.propTypes = {
@@ -53,17 +53,19 @@ App.propTypes = {
   onGameTimeEnded: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
+const mapStateToProps = (state) => Object.assign({}, {
+  questions: state.questions,
   step: state.step,
   mistakes: state.mistakes,
-  gameTime: state.gameTime
+  gameTime: state.gameTime,
+  errorsCount: state.errorsCount,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onWelcomeScreenClick: () => dispatch(incrementQuestion()),
 
-  onUserAnswer: (userAnswer, question, mistakes, maxMistakes) => {
-    dispatch(incrementQuestion());
+  onUserAnswer: (userAnswer, question, mistakes, maxMistakes, step) => {
+    dispatch(incrementQuestion(question, step));
     dispatch(incrementMistakes(userAnswer, question, mistakes, maxMistakes));
   },
 

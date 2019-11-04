@@ -7,19 +7,17 @@ import GameHeader from '~/components/game-header/game-header';
 class QuestionScreen extends PureComponent {
   static getScreen(props) {
 
-    const {currentQuestion, mistakes, gameTime, step, onUserAnswer} = props;
+    const {currentQuestion, gameTime, step, onUserAnswer} = props;
 
     switch (currentQuestion.type) {
       case `genre`: return <GenreQuestionScreen
         screenIndex={step}
-        mistakes={mistakes}
         question={currentQuestion}
         onAnswer={onUserAnswer}
       />;
 
       case `artist`: return <ArtistQuestionScreen
         screenIndex={step}
-        mistakes={mistakes}
         question={currentQuestion}
         onAnswer={onUserAnswer}
         gameTime={gameTime}

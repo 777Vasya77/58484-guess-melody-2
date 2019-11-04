@@ -3,19 +3,6 @@ import PropTypes from 'prop-types';
 import AudioPlayer from '~/components/audio-player/audio-player';
 
 class GenreQuestionScreen extends PureComponent {
-  static _getInitialState(answers) {
-    const initialState = {
-      activePlayer: -1,
-      userAnswers: {}
-    };
-
-    answers.forEach((answer, i) => {
-      Object.assign(initialState.userAnswers, {[`answer-${i}`]: false});
-    });
-
-    return initialState;
-  }
-
   constructor(props) {
     super(props);
 
@@ -102,6 +89,19 @@ class GenreQuestionScreen extends PureComponent {
         </form>
       </section>
     );
+  }
+
+  static _getInitialState(answers) {
+    const initialState = {
+      activePlayer: -1,
+      userAnswers: {}
+    };
+
+    answers.forEach((answer, i) => {
+      Object.assign(initialState.userAnswers, {[`answer-${i}`]: false});
+    });
+
+    return initialState;
   }
 }
 

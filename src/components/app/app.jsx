@@ -53,7 +53,7 @@ App.propTypes = {
   onGameTimeEnded: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => Object.assign({}, {
+const mapStateToProps = (state) => ({
   questions: state.questions,
   step: state.step,
   mistakes: state.mistakes,
